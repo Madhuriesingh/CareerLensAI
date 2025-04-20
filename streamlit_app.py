@@ -1,5 +1,6 @@
 import streamlit as st
-from career_engine import generate_career_report
+from career_engine import generate_career_advice
+
 
 st.set_page_config(page_title="Clarity Coach – Your Personal Career & Life Analyzer", layout="centered")
 
