@@ -12,7 +12,7 @@ user_input = st.text_area("✍️ Describe yourself, your interests, and your go
 if st.button("🔍 Analyze Me"):
     if user_input.strip():
         with st.spinner("Generating your personalized career report..."):
-            report = generate_career_report(user_input)
+            report = generate_career_advice(user_input)
             st.markdown(report)
     else:
         st.warning("Please enter a paragraph to analyze.")
