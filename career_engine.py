@@ -1,41 +1,47 @@
 from transformers import pipeline
 
-# Load Hugging Face FLAN-T5 model
+# Load Hugging Face model and create generation pipeline
 generator = pipeline("text2text-generation", model="google/flan-t5-base")
 
-def generate_career_report(user_input):
+def generate_career_advice(user_input):
     prompt = f"""
-You are a compassionate career coach and personality analyst.
-Analyze the following paragraph and return a report in this format:
+You are a world-class personality coach, career advisor, and life strategist.
+Your task is to write a detailed, empowering personality and career analysis for someone based on a paragraph they wrote about themselves.
 
-### 1. Who You Are:
-(A short description of personality, mindset, and style)
+Return the response in clean markdown format using the structure below. Use emotional depth, actionable language, and clarity. Avoid repetition.
 
-### 2. Core Motivations:
-(What drives this person deep down?)
+---
 
-### 3. Strengths:
-(A list of major strengths)
+### 🧠 1. Who You Are:
+Describe this person’s personality and mindset in 3–4 expressive sentences.
 
-### 4. Ideal Career Path:
-(One or two ideal career roles)
+### 🔥 2. Core Motivations:
+List what emotionally and intellectually drives this person.
 
-### 5. Business Niche:
-(Suggest a niche business idea based on their interests and traits)
+### 💪 3. Strengths:
+List 4–6 unique strengths or personal traits they seem to have.
 
-### 6. SWOT Summary:
-- Strengths:
-- Weaknesses:
-- Opportunities:
-- Threats:
+### 🚀 4. Ideal Career Path:
+Recommend 2–3 career options that align with their interests, values, and talents.
 
-### 7. Life Purpose Statement:
-(A two-sentence personal mission inspired by their values and goals)
+### 💼 5. Business Niche:
+Propose one innovative business idea that fits their mindset and life purpose.
+
+### 🛡️ 6. SWOT Summary:
+- **Strengths:**
+- **Weaknesses:**
+- **Opportunities:**
+- **Threats:**
+
+### 🌟 7. Life Purpose Statement:
+Write 2 sentences summarizing this person’s mission, impact, and philosophy in life.
+
+---
 
 Paragraph:
 \"\"\"
 {user_input}
 \"\"\"
 """
-    result = generator(prompt, max_length=600, do_sample=True)[0]['generated_text']
+    result = generator(prompt, max_length=700, do_sample=True)[0]['generated_text']
     return result
